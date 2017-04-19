@@ -1,0 +1,15 @@
+function D = FWalg(A)
+%UNTITLED4 Summary of this function goes here
+%   Detailed explanation goes here
+
+%when i and j are connected d = a_ij
+%when i = j, d = 0
+%when not connected d = infty
+
+
+D = repmat(A,1);%copied A to D because d = 0 when i and j are connected
+D(D == 0)=Inf; % 
+D(eye(size(D))~=0)=0;
+
+end
+
