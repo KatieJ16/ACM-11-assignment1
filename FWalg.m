@@ -15,15 +15,12 @@ D(eye(size(D))~=0)=0; % make diagonal all zero because d - 0 when i = j
 % need to make with out the i and j loop
 n = length(A);
 for k = 1:n
-    Dnew = repmat(D,1);
-    for i = 1:n
-        for j = 1:n
-            a = D(i,j);
-            b = D(i,k) + D(k,j);
-            Dnew(i,j) = min(a,b);
-        end
-    end
-    D = Dnew;
+    columnk = D(:, k);
+    columnMatrix = repmat(columnk, 1,n);
+    rowk = D(k,:);
+    rowMatrix = repmat(rowk, n, 1);
+    D = min(D, columnMatrix + rowMatrix);
+
     
 end
 
